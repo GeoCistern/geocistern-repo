@@ -19,6 +19,7 @@ class Navigation extends Component {
                         linkText='MakeSchool'
                         linkExtension='https://makeschool.org/mediabook/oa/tutorials/react-fundamentals-vm0/build-a-header-component/'
                     />
+                    <NavButton linkText='People' linkExtension='/People' />
                 </div>
             </nav>
         );
@@ -26,3 +27,30 @@ class Navigation extends Component {
 }
 
 export default Navigation;
+
+export const navData = [
+    {
+        id: 0,
+        // icon: <HomeIcon />,
+        text: "Home",
+        link: "/",
+    },
+    {
+        id: 1,
+        // icon: <TravelExploreIcon />,
+        text: "Explore",
+        link: "explore",
+    },
+    {
+        id: 2,
+        // icon: <BarChartIcon />,
+        text: "Statistics",
+        link: "statistics",
+    },
+    {
+        id: 3,
+        // icon: <SettingsIcon />,
+        text: "People",
+        link: "People",
+    },
+];

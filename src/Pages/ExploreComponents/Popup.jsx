@@ -1,5 +1,5 @@
 import React from "react";
-import "./Popup.css";
+import "../ExploreStyles/Popup.css";
 
 const Popup = (props) => {
     // const handleKeyPress = document.addEventListener("keyup", function (e) {

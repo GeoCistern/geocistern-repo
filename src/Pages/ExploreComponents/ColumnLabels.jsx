@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./DisplayTable.css";
+import "../ExploreStyles/DisplayTable.css";
 
 class ColumnLabels extends Component {
     render() {
