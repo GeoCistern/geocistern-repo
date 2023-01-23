@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./DisplayTable.css";
+// import "../ExploreStyles/DisplayTable.css";
 
 class ColumnLabels extends Component {
     render() {
@@ -24,7 +24,7 @@ class ColumnLabels extends Component {
                         aria-label='AUTHOR NAME (ORIGINAL LANGUAGE): activate to sort column ascending'
                         onClick={sortAuthorNameOriginal}
                     >
-                        AUTHOR NAME (ORIGINAL LANGUAGE)
+                        Author Name (Original Language)
                     </th>
                     <th
                         class='sorting'
@@ -34,7 +34,7 @@ class ColumnLabels extends Component {
                         aria-label='AUTHOR NAME TRANSLITERATION: activate to sort column ascending'
                         onClick={sortAuthorNameTranslit}
                     >
-                        AUTHOR NAME TRANSLITERATION
+                        Author Name (Transliteration)
                     </th>
                     <th
                         class='sorting'
@@ -44,7 +44,7 @@ class ColumnLabels extends Component {
                         aria-label='TITLE OF WORK (ORIGINAL LANGUAGE): activate to sort column ascending'
                         // onClick={sortTitleOriginal}
                     >
-                        TITLE OF WORK (ORIGINAL LANGUAGE)
+                        Title of Work (Original Language)
                     </th>
                     <th
                         class='sorting'
@@ -54,7 +54,7 @@ class ColumnLabels extends Component {
                         aria-label='TITLE OF WORK TRANSLITERATION: activate to sort column ascending'
                         // onClick={sortTitleTranslit}
                     >
-                        TITLE OF WORK TRANSLITERATION
+                        Title of Work (Transliteration)
                     </th>
                     <th
                         class='sorting'
@@ -64,7 +64,7 @@ class ColumnLabels extends Component {
                         aria-label='LANGUAGE: activate to sort column ascending'
                         // onClick={sortLanguage}
                     >
-                        LANGUAGE
+                        Language
                     </th>
                     <th
                         class='sorting'
@@ -74,7 +74,7 @@ class ColumnLabels extends Component {
                         aria-label='GENRE: activate to sort column ascending'
                         // onClick={sortGenre}
                     >
-                        GENRE
+                        Genre
                     </th>
                     <th
                         class='sorting'
@@ -84,7 +84,7 @@ class ColumnLabels extends Component {
                         aria-label='TYPE: activate to sort column ascending'
                         // onClick={sortType}
                     >
-                        TYPE
+                        Type
                     </th>
                     <th
                         class='sorting'
@@ -94,7 +94,7 @@ class ColumnLabels extends Component {
                         aria-label='DATE: activate to sort column ascending'
                         // onClick={sortDate}
                     >
-                        DATE
+                        Date
                     </th>
                 </tr>
             </thead>
