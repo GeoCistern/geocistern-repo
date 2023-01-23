@@ -1,3 +1,4 @@
+import "@picocss/pico";
 import "./App.css";
 import Header from "./Header";
 import Explore from "./Pages/Explore";
@@ -8,9 +9,9 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
     return (
-        <div className='App'>
+        <div className='App container'>
             <Header />
-            <main className='content'>
+            <main className='container'>
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/explore' element={<Explore />} />

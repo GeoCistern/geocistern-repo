@@ -1,33 +1,46 @@
 import React, { Component } from "react";
-import { Multiselect } from "multiselect-react-dropdown";
+import SearchBar from "./SearchBar";
 
 class FilterBar extends Component {
     render() {
-        const { filter1Elements } = this.props;
         return (
-            <>
-                <Multiselect
-                    options={filter1Elements}
-                    displayValue='key'
-                    selectionLimit='1'
-                />
-                <Multiselect
-                    options={filter1Elements}
-                    displayValue='key'
-                    selectionLimit='1'
-                />
-                <Multiselect
-                    options={filter1Elements}
-                    displayValue='key'
-                    groupBy='cat'
-                    showCheckbox={true}
-                />
-                <Multiselect
-                    options={filter1Elements}
-                    displayValue='key'
-                    selectionLimit='1'
-                />
-            </>
+            <div className='grid'>
+                <div>
+                    <SearchBar />
+                </div>
+                <div>
+                    <select id='fruit' required>
+                        <option value='' selected>
+                            Select a fruit…
+                        </option>
+                        <option>…</option>
+                    </select>
+                </div>
+                <div>
+                    <select id='beet' required>
+                        <option value='' selected>
+                            Select a fruit…
+                        </option>
+                        <option>…</option>
+                    </select>
+                </div>
+                <div>
+                    <select id='carrot' required>
+                        <option value='' selected>
+                            Select a fruit…
+                        </option>
+                        <option>…</option>
+                    </select>
+                </div>
+                <div>
+                    <select id='potato' required>
+                        <option value='' selected>
+                            Select a fruit…
+                        </option>
+                        <option>…</option>
+                    </select>
+                </div>
+            </div>
         );
     }
 }

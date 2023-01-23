@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect, useMemo } from "react";
 import FilterBar from "./ExploreComponents/FilterBar";
-import "./ExploreStyles/DisplayTable.css";
+// import "./ExploreStyles/DisplayTable.css";
 import Pagination from "./ExploreComponents//Pagination";
 import Popup from "./ExploreComponents//Popup";
 import ColumnLabels from "./ExploreComponents//ColumnLabels";
@@ -70,83 +70,93 @@ export default function Explore() {
     };
 
     return (
-        <div>
-            <div class='filter-bar-container'>
-                <SearchBar searchDatabase={searchDatabase} />
+        <>
+            <aside>
                 <FilterBar filter1Elements={queries} />
-            </div>
-            <table>
-                <ColumnLabels />
-                <tbody>
-                    {currentTableData.map((r, index) => {
-                        return (
+            </aside>
+            <div role='document'>
+                <table role='grid'>
+                    <ColumnLabels />
+                    <tbody>
+                        {currentTableData.map((r, index) => {
+                            return (
+                                <>
+                                    <tr
+                                        className='row-item'
+                                        key={index}
+                                        onClick={() => togglePopup(index)}
+                                    >
+                                        <td>
+                                            {r.authorNameOriginal
+                                                ? r.authorNameOriginal
+                                                : defaultValue}
+                                        </td>
+                                        <td>
+                                            {r.authorNameTranslit
+                                                ? r.authorNameTranslit
+                                                : defaultValue}
+                                        </td>
+                                        <td>
+                                            {r.titleOriginal
+                                                ? r.titleOriginal
+                                                : defaultValue}
+                                        </td>
+                                        <td>
+                                            {r.titleTranslit
+                                                ? r.titleTranslit
+                                                : defaultValue}
+                                        </td>
+                                        <td>
+                                            {r.language
+                                                ? r.language
+                                                : defaultValue}
+                                        </td>
+                                        <td>
+                                            {r.genre ? r.genre : defaultValue}
+                                        </td>
+                                        <td>
+                                            {r.textType
+                                                ? r.textType
+                                                : defaultValue}
+                                        </td>
+                                        <td>
+                                            {r.date ? r.date : defaultValue}
+                                        </td>
+                                    </tr>
+                                </>
+                            );
+                        })}
+                    </tbody>
+                </table>
+                {isPopupOpen && (
+                    <Popup
+                        content={
                             <>
-                                <tr
-                                    className='row-item'
-                                    key={index}
-                                    onClick={() => togglePopup(index)}
-                                >
-                                    <td>
-                                        {r.authorNameOriginal
-                                            ? r.authorNameOriginal
-                                            : defaultValue}
-                                    </td>
-                                    <td>
-                                        {r.authorNameTranslit
-                                            ? r.authorNameTranslit
-                                            : defaultValue}
-                                    </td>
-                                    <td>
-                                        {r.titleOriginal
-                                            ? r.titleOriginal
-                                            : defaultValue}
-                                    </td>
-                                    <td>
-                                        {r.titleTranslit
-                                            ? r.titleTranslit
-                                            : defaultValue}
-                                    </td>
-                                    <td>
-                                        {r.language ? r.language : defaultValue}
-                                    </td>
-                                    <td>{r.genre ? r.genre : defaultValue}</td>
-                                    <td>
-                                        {r.textType ? r.textType : defaultValue}
-                                    </td>
-                                    <td>{r.date ? r.date : defaultValue}</td>
-                                </tr>
+                                <b>Additional Details</b>
+                                <p>
+                                    Original location:{" "}
+                                    {popupContents.originalLocation} <br />
+                                    Publisher: {popupContents.publisher} <br />
+                                    Script: {popupContents.script} <br />
+                                    Page count: {popupContents.pageCount} <br />
+                                    Dimensions: {popupContents.dimensions}{" "}
+                                    <br />
+                                    Additional information:{" "}
+                                    {popupContents.additionalInfo}
+                                </p>
                             </>
-                        );
-                    })}
-                </tbody>
-            </table>
-            {isPopupOpen && (
-                <Popup
-                    content={
-                        <>
-                            <b>Additional Details</b>
-                            <p>
-                                Original location:{" "}
-                                {popupContents.originalLocation} <br />
-                                Publisher: {popupContents.publisher} <br />
-                                Script: {popupContents.script} <br />
-                                Page count: {popupContents.pageCount} <br />
-                                Dimensions: {popupContents.dimensions} <br />
-                                Additional information:{" "}
-                                {popupContents.additionalInfo}
-                            </p>
-                        </>
-                    }
-                    handleClose={togglePopup}
+                        }
+                        handleClose={togglePopup}
+                    />
+                )}
+                <Pagination
+                    className='pagination-bar'
+                    currentPage={currentPage}
+                    totalCount={database.length}
+                    pageSize={pageSize}
+                    onPageChange={(page) => setCurrentPage(page)}
                 />
-            )}
-            <Pagination
-                className='pagination-bar'
-                currentPage={currentPage}
-                totalCount={database.length}
-                pageSize={pageSize}
-                onPageChange={(page) => setCurrentPage(page)}
-            />
-        </div>
+            </div>
+        </>
     );
 }

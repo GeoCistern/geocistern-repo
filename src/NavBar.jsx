@@ -1,28 +1,31 @@
 import { navData } from "./Navigation";
-import { NavLink } from "react-router-dom";
-import "./NavBar.css";
+import { NavLink, useLocation } from "react-router-dom";
+// import "./NavBar.css";
 import { useState } from "react";
 
 export default function NavBar() {
-    const [active, setActive] = useState(true);
-    const toggleActive = () => {
-        setActive(!active);
-    };
+    const location = useLocation();
+
     return (
-        <div className='navBar-container'>
-            {navData.map((item) => {
-                return (
-                    <NavLink
-                        key={item.id}
-                        className='sideItem'
-                        to={item.link}
-                        onClick={toggleActive}
-                    >
-                        {item.icon}
-                        <span className='linkText'>{item.text}</span>
-                    </NavLink>
-                );
-            })}
-        </div>
+        <nav className='navBar-container'>
+            <ul>
+                <li>
+                    <hgroup>
+                        <h1>Cistern</h1>
+                        <h6>University of Toronto</h6>
+                    </hgroup>
+                </li>
+            </ul>
+            <ul>
+                {navData.map((item) => {
+                    console.log(location);
+                    return (
+                        <li id={item.id}>
+                            <a href={item.link}>{item.text}</a>
+                        </li>
+                    );
+                })}
+            </ul>
+        </nav>
     );
 }
