@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./Header";
 import Explore from "./Pages/Explore";
 import Home from "./Pages/Home";
-import People from "./Pages/People";
+import People from "./Pages/People/People";
 import Statistics from "./Pages/Statistics";
 import { Routes, Route } from "react-router-dom";
 
@@ -16,7 +16,7 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/explore' element={<Explore />} />
                     <Route path='/statistics' element={<Statistics />} />
-                    <Route path='/settings' element={<People />} />
+                    <Route path='/people' element={<People />} />
                 </Routes>
             </main>
         </div>
