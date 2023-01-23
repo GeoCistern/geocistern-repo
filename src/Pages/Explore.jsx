@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, useEffect, useMemo } from "react";
 import FilterBar from "./ExploreComponents/FilterBar";
-// import "./ExploreStyles/DisplayTable.css";
 import Pagination from "./ExploreComponents//Pagination";
 import Popup from "./ExploreComponents//Popup";
 import ColumnLabels from "./ExploreComponents//ColumnLabels";
@@ -131,20 +130,16 @@ export default function Explore() {
                 {isPopupOpen && (
                     <Popup
                         content={
-                            <>
-                                <b>Additional Details</b>
-                                <p>
-                                    Original location:{" "}
-                                    {popupContents.originalLocation} <br />
-                                    Publisher: {popupContents.publisher} <br />
-                                    Script: {popupContents.script} <br />
-                                    Page count: {popupContents.pageCount} <br />
-                                    Dimensions: {popupContents.dimensions}{" "}
-                                    <br />
-                                    Additional information:{" "}
-                                    {popupContents.additionalInfo}
-                                </p>
-                            </>
+                            <p>
+                                Original location:{" "}
+                                {popupContents.originalLocation} <br />
+                                Publisher: {popupContents.publisher} <br />
+                                Script: {popupContents.script} <br />
+                                Page count: {popupContents.pageCount} <br />
+                                Dimensions: {popupContents.dimensions} <br />
+                                Additional information:{" "}
+                                {popupContents.additionalInfo}
+                            </p>
                         }
                         handleClose={togglePopup}
                     />
