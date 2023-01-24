@@ -1,7 +1,5 @@
 import { navData } from "./Navigation";
-import { NavLink, useLocation } from "react-router-dom";
-// import "./NavBar.css";
-import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function NavBar() {
     const location = useLocation();
