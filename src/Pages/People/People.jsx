@@ -4,57 +4,67 @@ export default function People() {
             <h3>People</h3>
             <h4>Current Contributors:</h4>
             <article>
-                <img
-                    src='https://geocistern.github.io/images/Adrien%20Zakar_2018_01.jpg'
-                    alt='AdrienZakar'
-                    width='245'
-                    height='350'
-                ></img>
-                <br />
-                <strong>Adrien Zakar</strong> is Assistant Professor at the
-                University of Toronto's Department of Near and Middle Eastern
-                Civilizations and the Institute for the History and Philosophy
-                of Science and Technology. Previously, he received a Ph.D. in
-                History from Columbia University in 2018 and then worked as a
-                Mellon Postdoctoral Scholar at the Stanford Humanities Center
-                and a lecturer in the Department of History at the same
-                institution. Adrien is a historian of science and technology
-                with expertise in maps, visual practices, and spatial history.
-                Using a new range of archival sources in Ottoman, Turkish,
-                Arabic, and French, his work joins historical research with an
-                interdisciplinary approach to science and technology studies,
-                critical geography, and war studies. Outside his individual
-                research, Adrien enjoys collaborating with creative
-                professionals and student engineers towards generating
-                cutting-edge visualizations and processes that engage with the
-                past as much as contemporary questions and concerns such as the
-                attention economy and global shipping routes. For more
-                information, visit:{" "}
-                <a href='https://www.adrienzakar.com/'>adrienzakar.com</a>
+                <div>
+                    <br clear='left' />
+                    <strong>Adrien Zakar</strong> is Assistant Professor at the
+                    University of Toronto's Department of Near and Middle
+                    Eastern Civilizations and the Institute for the History and
+                    Philosophy of Science and Technology. Previously, he
+                    received a Ph.D. in History from Columbia University in 2018
+                    and then worked as a Mellon Postdoctoral Scholar at the
+                    Stanford Humanities Center and a lecturer in the Department
+                    of History at the same institution. Adrien is a historian of
+                    science and technology with expertise in maps, visual
+                    practices, and spatial history. Using a new range of
+                    archival sources in Ottoman, Turkish, Arabic, and French,
+                    his work joins historical research with an interdisciplinary
+                    approach to science and technology studies, critical
+                    geography, and war studies. Outside his individual research,
+                    Adrien enjoys collaborating with creative professionals and
+                    student engineers towards generating cutting-edge
+                    visualizations and processes that engage with the past as
+                    much as contemporary questions and concerns such as the
+                    attention economy and global shipping routes. For more
+                    information, visit:{" "}
+                    <a href='https://www.adrienzakar.com/'>adrienzakar.com</a>
+                    <img
+                        src='https://geocistern.github.io/images/Adrien%20Zakar_2018_01.jpg'
+                        alt='AdrienZakar'
+                        width='245'
+                        height='350'
+                        align='left'
+                    ></img>
+                    <br clear='left' />
+                </div>
             </article>
             <article>
-                <img
-                    src='https://geocistern.github.io/images/merve.jpg'
-                    alt='MerveTekgurler'
-                    width='342'
-                    height='256'
-                ></img>
-                <br />
-                <strong>Merve Tekgürler</strong> is the co-founder of Cistern
-                and a PhD student in History at Stanford University. They have a
-                BA degree in History and Social and Cultural Anthropology from
-                Freie University, Berlin. In their dissertation research, Merve
-                is working on Ottoman-Polish borderlands in late eighteenth and
-                early nineteenth centuries, with a focus on changes and
-                continuities north of the Danubian River in relation to Russian
-                and Austrian imperial policy. Merve’s interest in spatial
-                analysis and digital humanities is related to understanding
-                human geography as an integral part of history. Aside from the
-                Cistern project, Merve is working on training a handwritten text
-                recognition model for eighteenth century Ottoman Turkish and is
-                contributing to Mapping Ottoman Epirus project. Outside the
-                academia, Merve enjoys scuba diving, playing Animal Crossing,
-                and traveling.
+                <div className='grid'>
+                    <img
+                        src='https://geocistern.github.io/images/merve.jpg'
+                        alt='MerveTekgurler'
+                        width='342'
+                        height='256'
+                    ></img>
+                    <div>
+                        <strong>Merve Tekgürler</strong> is the co-founder of
+                        Cistern and a PhD student in History at Stanford
+                        University. They have a BA degree in History and Social
+                        and Cultural Anthropology from Freie University, Berlin.
+                        In their dissertation research, Merve is working on
+                        Ottoman-Polish borderlands in late eighteenth and early
+                        nineteenth centuries, with a focus on changes and
+                        continuities north of the Danubian River in relation to
+                        Russian and Austrian imperial policy. Merve’s interest
+                        in spatial analysis and digital humanities is related to
+                        understanding human geography as an integral part of
+                        history. Aside from the Cistern project, Merve is
+                        working on training a handwritten text recognition model
+                        for eighteenth century Ottoman Turkish and is
+                        contributing to Mapping Ottoman Epirus project. Outside
+                        the academia, Merve enjoys scuba diving, playing Animal
+                        Crossing, and traveling.
+                    </div>
+                </div>
             </article>
             <article>
                 <img
