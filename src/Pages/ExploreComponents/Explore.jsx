@@ -1,11 +1,9 @@
 import axios from "axios";
 import { useState, useEffect, useMemo } from "react";
-import FilterBar from "./ExploreComponents/FilterBar";
-// import "./ExploreStyles/DisplayTable.css";
-import Pagination from "./ExploreComponents//Pagination";
-import Popup from "./ExploreComponents//Popup";
-import ColumnLabels from "./ExploreComponents//ColumnLabels";
-import SearchBar from "./ExploreComponents/SearchBar";
+import FilterBar from "./FilterBar";
+import Pagination from "./Pagination";
+import Popup from "./Popup";
+import ColumnLabels from "./ColumnLabels";
 export default function Explore() {
     const [database, setDatabase] = useState([]);
 
@@ -31,54 +29,48 @@ export default function Explore() {
     const [popupContents, setPopupContents] = useState("");
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const togglePopup = (index) => {
-        console.log(index);
         if (!isPopupOpen) {
             setPopupContents(currentTableData[index]);
         }
         setIsPopupOpen(!isPopupOpen);
     };
 
-    // const [sorting, setSorting] = useState({
-    //     key: "byTitleTranslit",
-    //     ascending: true,
-    // });
-    // const sortColumn = (columnKey, ascending) => {
-    //     setSorting({ key: columnKey, ascendin: ascending });
-    //     // maybe need to refresh table to see update contents
-    // };
-    // useEffect(() => {
-    //     //Copy the db to prevent mutation
-    //     const copyDatabase = [...database];
-
-    //     const sortDatabase = copyDatabase.sort((a, b) => {
-    //         return a[sorting.key].localeCompare(b[sorting.key]);
-    //     });
-    //     setDatabase(sorting.ascending ? sortDatabase : sortDatabase.reverse());
-    // }, [database, sorting]);
-
-    const searchDatabase = (searchQuery) => {
-        setDatabase(
-            database.filter((row) => {
-                return row.titleTranslit.match(searchQuery);
-            })
-        );
-        console.log(
-            database.filter((row) => {
-                return row.titleTranslit.match(searchQuery);
-            })
+    // Search functionality
+    const [searchQuery, setSearchQuery] = useState("");
+    // Table columns being searched by
+    const searchKeys = [
+        "authorNameOriginal",
+        "authorNameTranslit",
+        "titleOriginal",
+        "titleTranslit",
+        "language",
+        "genre",
+        "textType",
+        "date",
+    ];
+    // Search function -- Todo: Make the fuzzyQuery fuzzier
+    const searchDatabase = (data) => {
+        const fuzzyQuery = searchQuery.toLowerCase();
+        return data.filter((row) =>
+            searchKeys.some((key) =>
+                row[key].toLowerCase().includes(fuzzyQuery)
+            )
         );
     };
 
     return (
         <>
             <aside>
-                <FilterBar filter1Elements={queries} />
+                <FilterBar
+                    filter1Elements={queries}
+                    searchChange={(searchQuery) => setSearchQuery(searchQuery)}
+                />
             </aside>
             <div role='document'>
                 <table role='grid'>
                     <ColumnLabels />
                     <tbody>
-                        {currentTableData.map((r, index) => {
+                        {searchDatabase(database).map((r, index) => {
                             return (
                                 <>
                                     <tr

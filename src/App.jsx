@@ -1,7 +1,7 @@
 import "@picocss/pico";
 import "./App.css";
 import Header from "./Header";
-import Explore from "./Pages/Explore";
+import Explore from "./Pages/ExploreComponents/Explore";
 import Home from "./Pages/Home";
 import People from "./Pages/People/People";
 import Statistics from "./Pages/Statistics";
