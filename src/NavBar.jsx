@@ -16,7 +16,6 @@ export default function NavBar() {
             </ul>
             <ul>
                 {navData.map((item) => {
-                    console.log(location);
                     return (
                         <li id={item.id}>
                             <a href={item.link}>{item.text}</a>
