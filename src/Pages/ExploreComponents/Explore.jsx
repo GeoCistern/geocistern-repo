@@ -42,13 +42,11 @@ export default function Explore() {
     };
 
     return (
-        <div className='grid'>
-            <aside>
-                <FilterBar
-                    filter1Elements={queries}
-                    searchChange={(searchQuery) => setSearchQuery(searchQuery)}
-                />
-            </aside>
+        <div>
+            <FilterBar
+                filter1Elements={queries}
+                searchChange={(searchQuery) => setSearchQuery(searchQuery)}
+            />
             <Table database={searchDatabase(dataTable)}></Table>
         </div>
     );
