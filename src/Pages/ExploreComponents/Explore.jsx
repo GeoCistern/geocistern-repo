@@ -47,7 +47,7 @@ export default function Explore() {
                 filter1Elements={queries}
                 searchChange={(searchQuery) => setSearchQuery(searchQuery)}
             />
-            <Table database={searchDatabase(dataTable)}></Table>
+            <Table database={searchDatabase(database)}></Table>
         </div>
     );
 }
