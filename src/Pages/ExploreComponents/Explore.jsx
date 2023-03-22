@@ -2,7 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import FilterBar from "./FilterBar";
 import Table from "./Table";
-import { dataTable } from "./TestDataSet";
+// import { dataTable } from "./TestDataSet";
+import { searchKeys } from "./FilterUtils";
 
 export default function Explore() {
     const [database, setDatabase] = useState([]);
@@ -11,26 +12,9 @@ export default function Explore() {
         axios.get("/api").then((res) => setDatabase(res.data));
     }, []);
 
-    const queries = [
-        { key: "a", cat: 1 },
-        { key: "b", cat: 2 },
-        { key: "c", cat: 3 },
-        { key: "d", cat: 4 },
-    ];
-
     // Search functionality
     const [searchQuery, setSearchQuery] = useState("");
-    // Table columns being searched by
-    const searchKeys = [
-        "authorNameOriginal",
-        "authorNameTranslit",
-        "titleOriginal",
-        "titleTranslit",
-        "language",
-        "genre",
-        "textType",
-        "date",
-    ];
+
     // Search function -- Todo: Make the fuzzyQuery fuzzier
     const searchDatabase = (data) => {
         const fuzzyQuery = searchQuery.toLowerCase();
@@ -41,13 +25,57 @@ export default function Explore() {
         );
     };
 
+    const [typeFilter, setTypeFilter] = useState(null);
+
+    const filterData = (data) => {
+        return searchDatabase(data).filter((row) => {
+            if (
+                typeFilter &&
+                typeFilter !== "All" &&
+                !row["textType"]
+                    .toLowerCase()
+                    .includes(typeFilter.toLowerCase())
+            ) {
+                return false;
+            }
+            if (
+                languageFilter &&
+                languageFilter !== "All" &&
+                !row["language"]
+                    .toLowerCase()
+                    .includes(languageFilter.toLowerCase())
+            ) {
+                return false;
+            }
+            if (
+                genreFilter &&
+                genreFilter !== "All" &&
+                !row["genre"].toLowerCase().includes(genreFilter.toLowerCase())
+            ) {
+                return false;
+            }
+            return true;
+        });
+    };
+
+    const [languageFilter, setLanguageFilterKeys] = useState(null);
+    const [scriptFilter, setScriptFilterKeys] = useState(null);
+    const [genreFilter, setGenreFilter] = useState(null);
+
     return (
         <div>
             <FilterBar
-                filter1Elements={queries}
                 searchChange={(searchQuery) => setSearchQuery(searchQuery)}
+                filterByType={(typeFilter) => setTypeFilter(typeFilter)}
+                filterByLanguage={(languageFilter) =>
+                    setLanguageFilterKeys(languageFilter)
+                }
+                filterByScript={(scriptFilter) =>
+                    setScriptFilterKeys(scriptFilter)
+                }
+                filterByGenre={(genreFilter) => setGenreFilter(genreFilter)}
             />
-            <Table database={searchDatabase(database)}></Table>
+            <Table database={filterData(database)}></Table>
         </div>
     );
 }
