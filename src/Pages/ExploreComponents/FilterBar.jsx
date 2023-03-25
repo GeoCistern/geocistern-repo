@@ -7,6 +7,7 @@ import {
     scriptFilterKeys,
     genreFilterKeys,
 } from "./FilterUtils";
+import DoubleSlider from "./DoubleSlider";
 
 const FilterBar = (props) => {
     const [typeFilter, setTypeFilter] = useState(null);
@@ -95,9 +96,22 @@ const FilterBar = (props) => {
             </div>
             <div className='headings'>
                 <small>Date:</small>
+                <DoubleSlider
+                    min={0}
+                    max={100}
+                    step={1}
+                    defaultValue={[0, 100]}
+                    onChange={(bounds) => console.log(bounds)}
+                />
             </div>
             <div className='headings'>
                 <small>Dimensions:</small>
+                <DoubleSlider
+                    min={0}
+                    max={100}
+                    step={1}
+                    defaultValue={[0, 100]}
+                />
             </div>
         </div>
     );
