@@ -4,6 +4,7 @@ import FilterBar from "./FilterBar";
 import Table from "./Table";
 // import { dataTable } from "./TestDataSet";
 import { searchKeys } from "./FilterUtils";
+import { dataTable } from "./TestDataSet";
 
 export default function Explore() {
     const [database, setDatabase] = useState([]);
@@ -24,8 +25,6 @@ export default function Explore() {
             )
         );
     };
-
-    const [typeFilter, setTypeFilter] = useState(null);
 
     const filterData = (data) => {
         return searchDatabase(data).filter((row) => {
@@ -54,10 +53,18 @@ export default function Explore() {
             ) {
                 return false;
             }
+            if (
+                scriptFilter
+                // scriptFilter !== "All" &&
+                // !row["genre"].toLowerCase().includes(scriptFilter.toLowerCase())
+            ) {
+                console.log(row);
+            }
             return true;
         });
     };
 
+    const [typeFilter, setTypeFilter] = useState(null);
     const [languageFilter, setLanguageFilterKeys] = useState(null);
     const [scriptFilter, setScriptFilterKeys] = useState(null);
     const [genreFilter, setGenreFilter] = useState(null);
@@ -75,7 +82,7 @@ export default function Explore() {
                 }
                 filterByGenre={(genreFilter) => setGenreFilter(genreFilter)}
             />
-            <Table database={filterData(database)}></Table>
+            <Table database={filterData(dataTable)}></Table>
         </div>
     );
 }
