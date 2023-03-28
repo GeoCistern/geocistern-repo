@@ -46,20 +46,34 @@ export default function Explore() {
             ) {
                 return false;
             }
-            if (
-                genreFilter &&
-                genreFilter !== "All" &&
-                !row["genre"].toLowerCase().includes(genreFilter.toLowerCase())
-            ) {
-                return false;
+            // Check if every genre in the multiselect is included in the row
+            if (genreFilter && !genreFilter.includes("All")) {
+                const row_genre = row["genre"].toLowerCase();
+                let included = true;
+                genreFilter.forEach((genre) => {
+                    if (!row_genre.includes(genre.toLowerCase())) {
+                        included = false;
+                    }
+                });
+                if (!included) {
+                    return false;
+                }
             }
+            // TODO
             if (
                 scriptFilter
                 // scriptFilter !== "All" &&
                 // !row["genre"].toLowerCase().includes(scriptFilter.toLowerCase())
             ) {
-                console.log(row);
+                // console.log(row);
             }
+            // TODO
+            let date = database.indexOf(row["titleOriginal"]).normalizedDate;
+            // console.log(date);
+            if (date < dateFilter[0] || date > dateFilter[1]) {
+                return false;
+            }
+            // TODO (dimension filter)
             return true;
         });
     };
@@ -67,7 +81,9 @@ export default function Explore() {
     const [typeFilter, setTypeFilter] = useState(null);
     const [languageFilter, setLanguageFilterKeys] = useState(null);
     const [scriptFilter, setScriptFilterKeys] = useState(null);
-    const [genreFilter, setGenreFilter] = useState(null);
+    const [genreFilter, setGenreFilter] = useState([]);
+    const [dateFilter, setDateFilter] = useState([]);
+    const [dimensionFilter, setDimensionFilter] = useState([]);
 
     return (
         <div>
@@ -81,6 +97,10 @@ export default function Explore() {
                     setScriptFilterKeys(scriptFilter)
                 }
                 filterByGenre={(genreFilter) => setGenreFilter(genreFilter)}
+                filterByDate={(dateFilter) => setDateFilter(dateFilter)}
+                filterByDimension={(dimensionFilter) =>
+                    setDimensionFilter(dimensionFilter)
+                }
             />
             <Table database={filterData(dataTable)}></Table>
         </div>

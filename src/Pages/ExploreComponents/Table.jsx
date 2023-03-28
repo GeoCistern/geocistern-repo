@@ -9,18 +9,19 @@ const Table = (props) => {
     let pageSize = 15;
     const [currentPage, setCurrentPage] = useState(1);
 
-    const currentTableData = useMemo(() => {
-        const firstPageIndex = (currentPage - 1) * pageSize;
-        const lastPageIndex = firstPageIndex + pageSize;
-        return database.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage]);
+    // const currentTableData = useMemo(() => {
+    //     const firstPageIndex = (currentPage - 1) * pageSize;
+    //     const lastPageIndex = firstPageIndex + pageSize;
+    //     return database.slice(firstPageIndex, lastPageIndex);
+    // }, [currentPage]);
 
     const defaultValue = "N/A";
     const [popupContents, setPopupContents] = useState("");
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const togglePopup = (index) => {
+        console.log(index, database[index]);
         if (!isPopupOpen) {
-            setPopupContents(currentTableData[index]);
+            setPopupContents(database[index]);
         }
         setIsPopupOpen(!isPopupOpen);
     };
@@ -78,13 +79,34 @@ const Table = (props) => {
                             <b>Additional Details</b>
                             <p>
                                 Original location:{" "}
-                                {popupContents.originalLocation} <br />
-                                Publisher: {popupContents.publisher} <br />
-                                Script: {popupContents.script} <br />
-                                Page count: {popupContents.pageCount} <br />
-                                Dimensions: {popupContents.dimensions} <br />
+                                {popupContents.originalLocation
+                                    ? popupContents.originalLocation
+                                    : ""}{" "}
+                                <br />
+                                Publisher:{" "}
+                                {popupContents.publisher
+                                    ? popupContents.publisher
+                                    : ""}{" "}
+                                <br />
+                                Script:{" "}
+                                {popupContents.script
+                                    ? popupContents.script
+                                    : ""}{" "}
+                                <br />
+                                Page count:{" "}
+                                {popupContents.pageCount
+                                    ? popupContents.pageCount
+                                    : ""}{" "}
+                                <br />
+                                Dimensions:{" "}
+                                {popupContents.dimensions
+                                    ? popupContents.dimensions
+                                    : ""}{" "}
+                                <br />
                                 Additional information:{" "}
-                                {popupContents.additionalInfo}
+                                {popupContents.additionalInfo
+                                    ? popupContents.additionalInfo
+                                    : ""}
                             </p>
                         </>
                     }
