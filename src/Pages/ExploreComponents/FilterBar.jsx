@@ -1,11 +1,14 @@
 import React from "react";
 import SearchBar from "./SearchBar";
+import Select from "react-select";
 import { useState, useEffect } from "react";
 import {
     typeFilterKeys,
     languageFilterKeys,
     scriptFilterKeys,
     genreFilterKeys,
+    defaultDateValues,
+    defaultDimensionValues,
 } from "./FilterUtils";
 import DoubleSlider from "./DoubleSlider";
 
@@ -25,9 +28,30 @@ const FilterBar = (props) => {
         setScriptFilter(e.target.value);
     };
 
-    const [genreFilter, setGenreFilter] = useState(null);
+    const [genreFilter, setGenreFilter] = useState([]);
     const handleGenreFilterChange = (e) => {
-        setGenreFilter(e.target.value);
+        var options = e.target.options;
+        var value = [];
+        for (var i = 0, l = options.length; i < l; i++) {
+            if (options[i].selected) {
+                value.push(options[i].value);
+            }
+        }
+        setGenreFilter(value);
+    };
+
+    const [dateFilter, setDateFilter] = useState(defaultDateValues);
+    const handleDateFilterChange = (bounds) => {
+        console.log(bounds);
+        setDateFilter(bounds);
+    };
+
+    const [dimensionFilter, setDimensionFilter] = useState(
+        defaultDimensionValues
+    );
+    const handleDimensionFilterChange = (bounds) => {
+        console.log(bounds);
+        setDimensionFilter(bounds);
     };
 
     // Handles the lag in asynchronous function setState()
@@ -36,6 +60,8 @@ const FilterBar = (props) => {
         props.filterByLanguage(languageFilter);
         props.filterByScript(scriptFilter);
         props.filterByGenre(genreFilter);
+        props.filterByDate(dateFilter);
+        props.filterByDimension(dimensionFilter);
     });
     return (
         <div className='grid'>
@@ -85,7 +111,12 @@ const FilterBar = (props) => {
             </div>
             <div className='headings'>
                 <small>Genre:</small>
-                <select id='genre' required onChange={handleGenreFilterChange}>
+                <select
+                    id='genre'
+                    required
+                    onChange={handleGenreFilterChange}
+                    multiple='multiple'
+                >
                     <option value={null} selected>
                         All
                     </option>
@@ -93,24 +124,45 @@ const FilterBar = (props) => {
                         return <option value={key}>{key}</option>;
                     })}
                 </select>
+                {/* <details role='list'>
+                    <summary aria-haspopup='listbox'>select...</summary>
+                    <ul role='listbox'>
+                        {genreFilterKeys.map((key) => {
+                            return (
+                                <li>
+                                    {" "}
+                                    <label>
+                                        {" "}
+                                        <input
+                                            type='checkbox'
+                                            value={key}
+                                        />{" "}
+                                        {key}{" "}
+                                    </label>{" "}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </details> */}
             </div>
             <div className='headings'>
                 <small>Date:</small>
                 <DoubleSlider
-                    min={0}
-                    max={100}
+                    min={defaultDateValues[0]}
+                    max={defaultDateValues[1]}
                     step={1}
-                    defaultValue={[0, 100]}
-                    onChange={(bounds) => console.log(bounds)}
+                    defaultValue={defaultDateValues}
+                    onChange={(bounds) => handleDateFilterChange(bounds)}
                 />
             </div>
             <div className='headings'>
                 <small>Dimensions:</small>
                 <DoubleSlider
-                    min={0}
-                    max={100}
+                    min={defaultDimensionValues[0]}
+                    max={defaultDimensionValues[1]}
                     step={1}
-                    defaultValue={[0, 100]}
+                    defaultValue={defaultDimensionValues}
+                    onChange={(bounds) => handleDimensionFilterChange(bounds)}
                 />
             </div>
         </div>
