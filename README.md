@@ -43,6 +43,12 @@ cd frontend
 ./runDockerFrontend.sh
 ```
 
+## Notes
+
+In the future, we have much to update on this project. There are currently tasks to complete in the `issues` tab of the project. The issues contain documentation and potential steps on how to tackle the tasks. This includes several bug fixes, filtering features, and data visualization features.
+
+Also in the future, we want to publish and deploy the website to production, allowing anyone to gain access to and learn from the website.
+
 ## Technologies used
 
 * React
