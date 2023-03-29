@@ -74,6 +74,10 @@ export default function Explore() {
                 return false;
             }
             // TODO (dimension filter)
+            // What we will do is use a single dimension slider and represent a large square and small square
+            // with the values of this slider. Using the areas of these squares, we can come up with a upper
+            // bound and lower bound for the area. For the rows to be displayed, the area of the artifact
+            // represented by the row must be more than the lower bound and less than the upper bound.
             return true;
         });
     };
@@ -102,7 +106,7 @@ export default function Explore() {
                     setDimensionFilter(dimensionFilter)
                 }
             />
-            <Table database={filterData(dataTable)}></Table>
+            <Table database={filterData(database)}></Table>
         </div>
     );
 }
