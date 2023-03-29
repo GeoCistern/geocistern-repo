@@ -1,8 +1,8 @@
-# Frontend of Professor Adrien Zakar's GeoCistern Website
+# Codebase of Professor Adrien Zakar's GeoCistern Website
 
 The goal of this project is to provide a visual display of entries from a database containing ancient Middle Eastern texts, maps, and atlases.
 
-This project runs runs with a React frontend and calls python API's from our [backend](https://github.com/20LiamB/geocistern-backend-repo) using FastAPI. We connect containers using Docker. 
+This project runs runs with a React frontend and calls python API's from our backend using FastAPI. We connect containers using Docker. 
 
 ## Prerequisites
 
