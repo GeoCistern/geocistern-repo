@@ -4,6 +4,8 @@ The goal of this project is to provide a visual display of entries from a databa
 
 This project runs runs with a React frontend and calls python API's from our backend using FastAPI. We connect containers using Docker. 
 
+Database can be found [here](https://docs.google.com/spreadsheets/d/1paVCh_yKpNbzHZPKrKu7ExZV4wZSK-J_4C6drFUqKYI/edit#gid=624471172).
+
 ## Prerequisites
 
 Before starting, make sure you have the following installed on your computer:
