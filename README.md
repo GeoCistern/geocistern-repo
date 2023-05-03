@@ -57,6 +57,7 @@ Also in the future, we want to publish and deploy the website to production, all
 * FastAPI
 * Python
 * Docker
+* Pico CSS (automatic styling)
 
 ## Contributors
 
