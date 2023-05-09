@@ -21,7 +21,7 @@ To run the project on your own computer, follow these steps:
 
 1. Clone the repository from GitHub:
 
-```git clone https://github.com/20LiamB/geocistern-repo.git ```
+```git clone https://github.com/GeoCistern/geocistern-repo.git ```
 
 2. Navigate to the project
 
