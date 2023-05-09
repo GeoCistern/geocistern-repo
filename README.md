@@ -37,6 +37,13 @@ cd backend
 ./runDockerBackend.sh
 ```
 
+(You may need to create a network first:
+
+```
+docker network create geocistern
+```
+
+)
 
 5. Open a new terminal window and navigate to `frontend` folder and start the frontend using Docker:
 
