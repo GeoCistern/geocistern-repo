@@ -21,7 +21,7 @@ To run the project on your own computer, follow these steps:
 
 1. Clone the repository from GitHub:
 
-```git clone https://github.com/20LiamB/geocistern-repo.git ```
+```git clone https://github.com/GeoCistern/geocistern-repo.git ```
 
 2. Navigate to the project
 
@@ -37,6 +37,13 @@ cd backend
 ./runDockerBackend.sh
 ```
 
+(You may need to create a network first:
+
+```
+docker network create geocistern
+```
+
+)
 
 5. Open a new terminal window and navigate to `frontend` folder and start the frontend using Docker:
 
